@@ -21,7 +21,7 @@ public class SortingAlgorithm
     }
 
     /**
-     * 
+     * creates a new ArrayList with the sorted values of num in order from least to greatest
      */
     public void sortNums(){
         int max = getMax(nums);
