@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * @author (Grace Jau)
  * @version (0109)
  */
-public class SortingAlgorithm
+public class MySort
 {
     private ArrayList<Integer> nums;
     private ArrayList<Integer> numOfEachValue;
@@ -14,7 +14,7 @@ public class SortingAlgorithm
     /**
      * Constructor for objects of class SortingAlgorithm
      */
-    public SortingAlgorithm(){
+    public MySort(){
         nums = new ArrayList<Integer>();
         numOfEachValue = new ArrayList<Integer>();
         orderedNums = new ArrayList<Integer>();

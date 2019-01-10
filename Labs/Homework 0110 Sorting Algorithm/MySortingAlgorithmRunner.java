@@ -5,10 +5,10 @@ import java.util.ArrayList;
  * @author (Grace Jau)
  * @version (0109)
  */
-public class SortingAlgorithmRunner
+public class MySortingAlgorithmRunner
 {
     public static void main(){
-        SortingAlgorithm s = new SortingAlgorithm();
+        MySort s = new MySort();
         s.fillNums(50, 1, 10);
         s.printNums();
         s.sortNums();
