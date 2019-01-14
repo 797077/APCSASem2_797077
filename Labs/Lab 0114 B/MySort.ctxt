@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=MySort
+comment0.text=\r\n\ Sorts\ an\ ArrayList\ of\ integers\ in\ order\ from\ least\ to\ greatest\r\n\r\n\ @author\ (Grace\ Jau)\r\n\ @version\ (0114)\r\n
+comment1.params=
+comment1.target=MySort()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ SortingAlgorithm\r\n
+comment2.params=
+comment2.target=void\ sortNums()
+comment2.text=\r\n\ creates\ a\ new\ ArrayList\ with\ the\ sorted\ values\ of\ num\ in\ order\ from\ least\ to\ greatest\r\n
+comment3.params=array
+comment3.target=int\ getMax(java.util.ArrayList)
+comment3.text=\r\n\ returns\ the\ maximum\ integer\ value\ of\ an\ ArrayList\ array\r\n\ assumes\ array\ has\ length\ of\ at\ least\ one\r\n
+comment4.params=array
+comment4.target=int\ getMin(java.util.ArrayList)
+comment4.text=\r\n\ returns\ the\ minimum\ integer\ value\ of\ an\ array\r\n\ assumes\ array\ has\ length\ of\ at\ least\ one\r\n
+comment5.params=length\ min\ max
+comment5.target=void\ fillNums(int,\ int,\ int)
+comment5.text=\r\n\ Fills\ nums\ with\ integer\ values\ within\ the\ range\ provided\ (inclusive)\ until\ the\ array\ has\ the\ designated\ length\r\n
+comment6.params=
+comment6.target=void\ printNums()
+comment6.text=\r\n\ Prints\ the\ values\ of\ nums\ in\ rows\ of\ ten\r\n
+comment7.params=
+comment7.target=void\ printOrderedNums()
+comment7.text=\r\n\ Prints\ the\ values\ of\ orderedNums\ in\ rows\ of\ ten\r\n
+numComments=8
