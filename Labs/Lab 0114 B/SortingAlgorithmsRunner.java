@@ -8,14 +8,16 @@ public class SortingAlgorithmsRunner
 {
     public static void main(){
         SortingAlgorithms s = new SortingAlgorithms();
-        s.fillNums(0, 9, 20);
+        s.fillNums(0, 9, 50);
+        s.storeNums();
         s.printNums();
         s.bubbleSort();
         s.printNums();
-        SortingAlgorithms t = new SortingAlgorithms();
-        t.fillNums(0, 9, 20);
-        t.printNums();
-        t.selectSort();
-        t.printNums();
+        s.unsortNums();
+        s.selectSort();
+        s.printNums();
+        s.unsortNums();
+        s.insertionSort();
+        s.printNums();
     }
 }
