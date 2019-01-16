@@ -1,81 +1,118 @@
-import java.util.ArrayList;
 /**
- * Sorts an ArrayList of integers in order from least to greatest
+ * Sorting Algorithms
  *
  * @author (Grace Jau)
- * @version (0109)
+ * @version (0110)
  */
-public class MySort
+public class SortingAlgorithms
 {
-    private ArrayList<Integer> nums;//declares lists
-    private ArrayList<Integer> numOfEachValue;
-    private ArrayList<Integer> orderedNums;
-    
+    private int[] nums;
+    private int[] unsortedNums;
+
     /**
-     * Constructor for objects of class SortingAlgorithm
+     * Constructor for objects of class SortingAlgorithms
      */
-    public MySort(){// initializes lists
-        nums = new ArrayList<Integer>();
-        numOfEachValue = new ArrayList<Integer>();
-        orderedNums = new ArrayList<Integer>();
+    public SortingAlgorithms()
+    {
+        nums = new int[50];
+        unsortedNums = new int[50];
     }
 
     /**
-     * creates a new ArrayList with the sorted values of num in order from least to greatest
+     * stores the unsorted nums so that it can be referred to later
      */
-    public void sortNums(){
-        int max = getMax(nums);
-        int min = getMin(nums);
-        for (int i = min; i <= max; i++){//counts the number of occurrences of each value
-            int counter = 0;
-            for (int j = 0; j < nums.size(); j++){
-                if(nums.get(j) == i){
-                    counter++;
+    public void storeNums(){
+        for (int i = 0; i < nums.length; i++){
+            unsortedNums[i] = nums[i];
+        }
+    }
+    
+    /**
+     * unsorts nums so that it is exactly the same as it was before it was sorted; this allows the sorting methods to be comparable because they unsort the exact same array of numbers
+     */
+    public void unsortNums(){
+        for (int i = 0; i < nums.length; i++){
+            nums[i] = unsortedNums[i];
+        }
+    }
+    
+    /**
+     * implements the bubble sort algorithm
+     */
+    public void bubbleSort(){
+        double initialTime = System.nanoTime();
+        int compareCount = 0;
+        int swapCount = 0;
+        for (int i = 0; i < nums.length; i++){//traverses array
+             for (int j = 0; j < nums.length-i-1; j++){
+                 compareCount++;
+                 if (nums[j] > nums[j+1]){//compares value to see if the right value is greater
+                     swapCount++;
+                     int swapper = nums[j];//swaps two values
+                     nums[j] = nums[j+1];
+                     nums[j+1] = swapper;
+                 }
+             }
+        }
+        System.out.println("\nBUBBLE SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
+        System.out.println("Number of compares: "+ compareCount);
+        System.out.print("Number of swaps: "+swapCount);
+    }
+    
+    /**
+     * implements the select sort algorithm
+     */
+    public void selectSort(){
+        double initialTime = System.nanoTime();
+        int compareCount = 0;
+        int swapCount = 0;
+        for (int i = 0; i < nums.length-1; i++){//traverses array
+            int index = i;
+            for (int j = i + 1; j < nums.length; j++){
+                compareCount++;
+                if (nums[j] < nums[index]){//searches for the smallest value in the unsorted section
+                    index = j;
                 }
             }
-            numOfEachValue.add(counter);
-        }
-        for (int i = 0; i < numOfEachValue.size(); i++){//adds the values in order to a new array
-            for (int k = 0; k < numOfEachValue.get(i); k++){
-                orderedNums.add(i+min);
-            }
-        }
+            swapCount++;
+            int smallerNumber = nums[index];//places that value at the end of the sorted section by swapping
+            nums[index] = nums[i];
+            nums[i] = smallerNumber;
+         }
+        System.out.println("\nSELECT SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
+        System.out.println("Number of compares: "+ compareCount);
+        System.out.print("Number of swaps: "+swapCount);
     }
     
     /**
-     * returns the maximum integer value of an ArrayList array
-     * assumes array has length of at least one
+     * implements the insertion sort algorithm
      */
-    public int getMax(ArrayList<Integer> array){
-        int max = array.get(0);
-        for (int i = 1; i < array.size(); i++){
-            if(array.get(i) > max){
-                max = array.get(i);
+    public void insertionSort(){
+        double initialTime = System.nanoTime();
+        int compareCount = 0;
+        int swapCount = 0;
+        for (int i = 0; i < nums.length; i++){
+            for (int j = i; j > 0; j--){
+                compareCount++;
+                if (nums[j-1] > nums[j]){
+                    swapCount++;
+                    int smallerNumber = nums[j];
+                    nums[j] = nums[j-1];
+                    nums[j-1] = smallerNumber;
+                }
             }
         }
-        return max;
-    }
-    
-    /**
-     * returns the minimum integer value of an array
-     * assumes array has length of at least one
-     */
-    public int getMin(ArrayList<Integer> array){
-        int min = array.get(0);
-        for (int i = 1; i < array.size(); i++){
-            if(array.get(i) < min){
-                min = array.get(i);
-            }
-        }
-        return min;
+        System.out.println("\nINSERTION SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
+        System.out.println("Number of compares: "+ compareCount);
+        System.out.print("Number of swaps: "+swapCount);
     }
     
     /**
      * Fills nums with integer values within the range provided (inclusive) until the array has the designated length
      */
-    public void fillNums(int length, int min, int max){
-        for (int i = 0; i < length; i++){
-            nums.add((int)(Math.random()*((max+1)-min)+min));
+    public void fillNums(int min, int max){
+        for (int i = 0; i < nums.length; i++){
+            nums[i] = ((int)(Math.random()*((max+1)-min)+min));
         }
     }
     
@@ -83,24 +120,11 @@ public class MySort
      * Prints the values of nums in rows of ten
      */
     public void printNums(){
-        for (int i = 0; i < nums.size(); i++){
+        for (int i = 0; i < nums.length; i++){
             if(i%10 == 0){
                 System.out.println();
             }
-            System.out.print(nums.get(i)+", ");
-        }
-        System.out.println("\n++++++++++++++++++++++++++++++++++");
-    }
-    
-    /**
-     * Prints the values of orderedNums in rows of ten
-     */
-    public void printOrderedNums(){
-        for (int i = 0; i < orderedNums.size(); i++){
-            if(i%10 == 0){
-                System.out.println();
-            }
-            System.out.print(orderedNums.get(i)+", ");
+            System.out.print(nums[i]+", ");
         }
         System.out.println("\n++++++++++++++++++++++++++++++++++");
     }
