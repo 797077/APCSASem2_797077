@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=SortingAlgorithms
-comment0.text=\r\n\ Sorting\ Algorithms\r\n\r\n\ @author\ (Grace\ Jau)\r\n\ @version\ (0110)\r\n
+comment0.text=\r\n\ Sorting\ Algorithms\r\n\r\n\ @author\ (Grace\ Jau)\r\n\ @version\ (0114)\r\n
 comment1.params=
 comment1.target=SortingAlgorithms()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ SortingAlgorithms\r\n
 comment2.params=
 comment2.target=void\ storeNums()
+comment2.text=\r\n\ stores\ the\ unsorted\ nums\ so\ that\ it\ can\ be\ referred\ to\ later\r\n
 comment3.params=
 comment3.target=void\ unsortNums()
+comment3.text=\r\n\ unsorts\ nums\ so\ that\ it\ is\ exactly\ the\ same\ as\ it\ was\ before\ it\ was\ sorted;\ this\ allows\ the\ sorting\ methods\ to\ be\ comparable\ because\ they\ unsort\ the\ exact\ same\ array\ of\ numbers\r\n
 comment4.params=
 comment4.target=void\ bubbleSort()
 comment4.text=\r\n\ implements\ the\ bubble\ sort\ algorithm\r\n

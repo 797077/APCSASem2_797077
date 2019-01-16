@@ -55,7 +55,7 @@ public class SortingAlgorithms
                  }
              }
         }
-        System.out.println("\nBUBBLE SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
+        System.out.println("\nBUBBLE SORT\nTime: "+(System.nanoTime()-initialTime)+" nanoseconds");
         System.out.println("Number of compares: "+ compareCount);
         System.out.print("Number of swaps: "+swapCount);
     }
@@ -80,7 +80,7 @@ public class SortingAlgorithms
             nums.set(index, nums.get(i));
             nums.set(i, smallerNumber);
          }
-        System.out.println("\nSELECT SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
+        System.out.println("\nSELECT SORT\nTime: "+(System.nanoTime()-initialTime)+" nanoseconds");
         System.out.println("Number of compares: "+ compareCount);
         System.out.print("Number of swaps: "+swapCount);
     }
@@ -103,7 +103,7 @@ public class SortingAlgorithms
                 }
             }
         }
-        System.out.println("\nINSERTION SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
+        System.out.println("\nINSERTION SORT\nTime: "+(System.nanoTime()-initialTime)+" nanoseconds");
         System.out.println("Number of compares: "+ compareCount);
         System.out.print("Number of swaps: "+swapCount);
     }

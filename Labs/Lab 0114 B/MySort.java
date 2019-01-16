@@ -44,7 +44,7 @@ public class MySort
                 orderedNums.add(i+min);
             }
         }
-        System.out.println("\nMY SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
+        System.out.println("\nMY SORT\nTime: "+(System.nanoTime()-initialTime)+" nanoseconds");
         System.out.println("Number of compares: "+ compareCount);
         System.out.print("Number of swaps: "+swapCount);//this will always be zero because my sorting algorithm does not swap values
     }
