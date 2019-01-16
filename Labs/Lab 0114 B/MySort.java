@@ -3,7 +3,7 @@ import java.util.ArrayList;
  * Sorts an ArrayList of integers in order from least to greatest
  *
  * @author (Grace Jau)
- * @version (0114)
+ * @version (0109)
  */
 public class MySort
 {
@@ -24,11 +24,15 @@ public class MySort
      * creates a new ArrayList with the sorted values of num in order from least to greatest
      */
     public void sortNums(){
+        double initialTime = System.nanoTime();
+        int compareCount = 0;
+        int swapCount = 0;
         int max = getMax(nums);
         int min = getMin(nums);
         for (int i = min; i <= max; i++){//counts the number of occurrences of each value
             int counter = 0;
             for (int j = 0; j < nums.size(); j++){
+                compareCount++;
                 if(nums.get(j) == i){
                     counter++;
                 }
@@ -40,6 +44,9 @@ public class MySort
                 orderedNums.add(i+min);
             }
         }
+        System.out.println("\nMY SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
+        System.out.println("Number of compares: "+ compareCount);
+        System.out.print("Number of swaps: "+swapCount);//this will always be zero because my sorting algorithm does not swap values
     }
     
     /**
