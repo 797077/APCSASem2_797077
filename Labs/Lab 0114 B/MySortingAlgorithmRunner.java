@@ -3,7 +3,7 @@ import java.util.ArrayList;
  * Sorts an ArrayList of integers in order from least to greatest
  *
  * @author (Grace Jau)
- * @version (0114)
+ * @version (0109)
  */
 public class MySortingAlgorithmRunner
 {
