@@ -2,7 +2,7 @@
  * Sorting Algorithms
  *
  * @author (Grace Jau)
- * @version (0110)
+ * @version (0114)
  */
 public class SortingAlgorithms
 {
@@ -15,14 +15,25 @@ public class SortingAlgorithms
     public SortingAlgorithms()
     {
         nums = new int[50];
+        unsortedNums = new int[50];
     }
 
+    /**
+     * stores the unsorted nums so that it can be referred to later
+     */
     public void storeNums(){
-        unsortedNums = nums;
+        for (int i = 0; i < nums.length; i++){
+            unsortedNums[i] = nums[i];
+        }
     }
     
+    /**
+     * unsorts nums so that it is exactly the same as it was before it was sorted; this allows the sorting methods to be comparable because they unsort the exact same array of numbers
+     */
     public void unsortNums(){
-        nums = unsortedNums;
+        for (int i = 0; i < nums.length; i++){
+            nums[i] = unsortedNums[i];
+        }
     }
     
     /**
@@ -43,7 +54,7 @@ public class SortingAlgorithms
                  }
              }
         }
-        System.out.println("\nBUBBLE SORT\nTime: "+(System.nanoTime()-initialTime));
+        System.out.println("\nBUBBLE SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
         System.out.println("Number of compares: "+ compareCount);
         System.out.print("Number of swaps: "+swapCount);
     }
@@ -68,7 +79,7 @@ public class SortingAlgorithms
             nums[index] = nums[i];
             nums[i] = smallerNumber;
          }
-        System.out.println("\nSELECT SORT\nTime: "+(System.nanoTime()-initialTime));
+        System.out.println("\nSELECT SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
         System.out.println("Number of compares: "+ compareCount);
         System.out.print("Number of swaps: "+swapCount);
     }
@@ -91,7 +102,7 @@ public class SortingAlgorithms
                 }
             }
         }
-        System.out.println("\nINSERTION SORT\nTime: "+(System.nanoTime()-initialTime));
+        System.out.println("\nINSERTION SORT\nTime: "+(System.nanoTime()-initialTime)+" nanosoconds");
         System.out.println("Number of compares: "+ compareCount);
         System.out.print("Number of swaps: "+swapCount);
     }
