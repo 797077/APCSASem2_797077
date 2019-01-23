@@ -13,7 +13,7 @@ public class SortingAlgorithms
      */
     public SortingAlgorithms()
     {
-        nums = new int[50];
+        nums = new int[6];
     }
 
     /**
@@ -42,9 +42,11 @@ public class SortingAlgorithms
                     index = j;
                 }
             }
+            printNums();
             int smallerNumber = nums[index];//places that value at the end of the sorted section by swapping
             nums[index] = nums[i];
             nums[i] = smallerNumber;
+            
          }
         }
     
@@ -67,6 +69,7 @@ public class SortingAlgorithms
             }
             System.out.print(nums[i]+", ");
         }
-        System.out.println("\n++++++++++++++++++++++++++++++++++");
+        System.out.println();
+        //System.out.println("\n++++++++++++++++++++++++++++++++++");
     }
 }

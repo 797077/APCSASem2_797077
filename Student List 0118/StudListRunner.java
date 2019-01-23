@@ -3,7 +3,7 @@ import java.util.Scanner;
  * ArrayList Project
  *
  * @Grace Jau
- * @version 0118
+ * @version 0123
  */
 public class StudListRunner
 {
@@ -65,15 +65,13 @@ public class StudListRunner
             }else if (statement.equals("6")){
                 int x = inputNumOrString("last name");
                 if (x == 0){//checks whether to ask for student number or last name
-                    name = "";
-                    num = inputStudentNum();
+                    sl.printStudentFromNumber(inputStudentNum());
                 }else{
                     System.out.println("Student last name:");
                     name = in.nextLine();
-                    num = 0;
+                    sl.printStudentFromName(name);
                 }
-                sl.printStudent(num, name);
-            }else if (statement.equals("7")){
+            }else if (statement.equals("7")){//sorts the student list
                 sl.runMergeSort();
                 System.out.println("The student list has been sorted.");
             }else if (!statement.equals("8")){//accounts for other cases

@@ -4,7 +4,7 @@ import java.util.Scanner;
  * ArrayList Project
  *
  * @Grace Jau
- * @version 0118
+ * @version 0123
  */
 public class StudList{
     ArrayList<Student>studList;
@@ -202,20 +202,36 @@ public class StudList{
     }
 
     /**
-     * finds the student given number or last name
+     * finds the student given student number
      * prints that student's information or prints that the student does not exist
      */
-    public void printStudent(int num, String ln){
+    public void printStudentFromNumber(int num){
+        runMergeSort();
+        int studentExists = -1;
+        int i = 0;
+        while (true){
+            i = studList.size()/2;
+            if (studList.get(i).getStuNumber() == num){
+                studentExists = i;
+                break;
+            }
+        }
+        if (studentExists == -1){
+            System.out.println("This student was not found in the student list.");
+        }else{
+            System.out.println(studList.get(studentExists).getFullName()+"   "+studList.get(studentExists).getStuNumber()+"   "+studList.get(studentExists).getStuGPA());
+        }
+    }
+    
+    /**
+     * finds the student given the last name
+     * prints that student's information or prints that the student does not exist
+     */
+    public void printStudentFromName(String ln){
         int studentExists = -1;
         for (int i = 0; i < studList.size(); i++){
-            if (!ln.equals("")){
-                if (studList.get(i).getLastName().equals(ln)){
-                    studentExists = i;
-                }
-            }else{
-                if (studList.get(i).getStuNumber() == num){
-                    studentExists = i;
-                }
+            if (studList.get(i).getLastName().equals(ln)){
+                studentExists = i;
             }
         }
         if (studentExists == -1){
