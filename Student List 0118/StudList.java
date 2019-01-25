@@ -203,23 +203,34 @@ public class StudList{
 
     /**
      * finds the student given student number
-     * prints that student's information or prints that the student does not exist
+     * prints that student's information or prints that the student does not exist using binary search
      */
     public void printStudentFromNumber(int num){
         runMergeSort();
         int studentExists = -1;
-        int i = 0;
-        while (true){
-            i = studList.size()/2;
-            if (studList.get(i).getStuNumber() == num){
-                studentExists = i;
+        ArrayList<Student> findingStudents = new ArrayList<Student>();
+        for (int k = 0; k < studList.size(); k++){//makes a copy of studList
+            findingStudents.add(studList.get(k));
+        }
+        int i;
+        while (findingStudents.size() >= 1){//continually cuts the copy of studList in half until it finds the correct student
+            i = findingStudents.size()/2;
+            if (findingStudents.get(i).getStuNumber() == num){//if it has found the student, print the student's information
+                studentExists = 0;
+                System.out.println(findingStudents.get(i).getFullName()+"   "+findingStudents.get(i).getStuNumber()+"   "+findingStudents.get(i).getStuGPA());
                 break;
+            }else if (findingStudents.get(i).getStuNumber() < num){
+                for (int j = i; j >= 0; j--){//removes the lower half of findingStudents
+                    findingStudents.remove(j);
+                }
+            }else{
+                while (findingStudents.size() > i){//removes the upper half of findingStudents
+                    findingStudents.remove(i);
+                }
             }
         }
         if (studentExists == -1){
             System.out.println("This student was not found in the student list.");
-        }else{
-            System.out.println(studList.get(studentExists).getFullName()+"   "+studList.get(studentExists).getStuNumber()+"   "+studList.get(studentExists).getStuGPA());
         }
     }
     
