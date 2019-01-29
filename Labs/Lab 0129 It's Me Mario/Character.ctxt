@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Character
+comment0.text=\r\n\ Lab\ 0129\ It's\ Me\ Mario\r\n\r\n\ @author\ (Grace\ Jau)\r\n\ @version\ (0129)\r\n
+comment1.params=cp\ s
+comment1.target=Character(java.lang.String,\ int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Character\r\n
+comment2.params=cp
+comment2.target=void\ setCatchphrase(java.lang.String)
+comment2.text=\r\n\ set\ catchphrase\ to\ the\ parameter\ cp\r\n
+comment3.params=
+comment3.target=java.lang.String\ getCatchphrase()
+comment3.text=\r\n\ returns\ catchphrase\r\n
+comment4.params=s
+comment4.target=void\ setSpeed(int)
+comment4.text=\r\n\ set\ speed\ to\ parameter\ s\r\n
+comment5.params=
+comment5.target=int\ getSpeed()
+comment5.text=\r\n\ returns\ speed\r\n
+numComments=6

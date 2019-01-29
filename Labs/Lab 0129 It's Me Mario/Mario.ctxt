@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Mario
+comment0.text=\r\n\ Lab\ 0129\ It's\ Me\ Mario\r\n\r\n\ @author\ (Grace\ Jau)\r\n\ @version\ (0129)\r\n
+comment1.params=cp\ s
+comment1.target=Mario(java.lang.String,\ int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Mario\r\n
+comment2.params=s
+comment2.target=void\ setSpeed(int)
+comment2.text=\r\n\ overrides\ the\ parent\ class\ and\ doubles\ Mario's\ speed\r\n
+numComments=3
