@@ -13,6 +13,9 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     public int height;
     int mouseFromX;
     int mouseFromY;
+    int rectX = 0;
+    int rectY = 0;
+    boolean shapeSelected;
 
     /**
      * Constructor for objects of class CanvasComponent
@@ -22,6 +25,8 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
         setSize(w, h);
         width = w;
         height = h;
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
     }
 
     /**
@@ -31,7 +36,7 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     public void paintComponent(Graphics g)
     {
         g.setColor(Color.black);
-        g.fillRect(0, 0, width, height);
+        g.fillRect(rectX, rectY, width, height);
     }
     
     /**
@@ -51,6 +56,9 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     {
         mouseFromX = e.getX();
         mouseFromY = e.getY();
+        if (mouseFromX >= rectX && mouseFromX <= rectX+width && mouseFromY >= rectY && mouseFromY <= rectY+height){
+            shapeSelected = true;
+        }
     }
     
     /**
@@ -86,7 +94,13 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
      */
     public void mouseDragged(MouseEvent e)
     {
-        
+        if (shapeSelected){
+            int mouseToX = e.getX();
+            int mouseToY = e.getY();
+            rectX = mouseToX-mouseFromX;
+            rectY = mouseToY-mouseFromY;
+            repaint();
+        }
     }
     
     /**
