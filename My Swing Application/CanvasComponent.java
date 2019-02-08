@@ -7,7 +7,7 @@ import java.awt.event.*;
  * @author (Grace Jau)
  * @version (0204)
  */
-public class CanvasComponent extends JComponent implements MouseListener, MouseMotionListener
+public class CanvasComponent extends JComponent implements MouseListener, MouseMotionListener, ActionListener, KeyListener
 {
     public int width;
     public int height;
@@ -16,6 +16,12 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     int rectX = 0;
     int rectY = 0;
     boolean shapeSelected;
+    int animationDeltaX = 1;
+    int animationDeltaY = 0;
+    int gutterX = 10;
+    int gutterY = 10;
+    Timer animationTimer;
+    int motionSpeed = 1;
 
     /**
      * Constructor for objects of class CanvasComponent
@@ -27,8 +33,77 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
         height = h;
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
+        animationTimer = new Timer(20, this);
+        animationTimer.start();
     }
 
+    /**
+     * An example of a method - replace this comment with your own
+     * 
+     */
+    public void keyTyped(KeyEvent e)
+    {
+        char keyChar = e.getKeyChar();
+        if (keyChar == '+'){
+            motionSpeed++;
+        }
+        if (keyChar == '-'&& motionSpeed > 0){
+            motionSpeed--;
+        }
+    }
+    
+    /**
+     * An example of a method - replace this comment with your own
+     * 
+     */
+    public void keyPressed(KeyEvent e)
+    {}
+    
+    /**
+     * An example of a method - replace this comment with your own
+     * 
+     */
+    public void keyReleased(KeyEvent e)
+    {}
+    
+    /**
+     * An example of a method - replace this comment with your own
+     * 
+     */
+    public void actionPerformed(ActionEvent e)
+    {
+        Dimension componentSizeDimension = getSize();
+        if (rectX+gutterX+width > getWidth()){
+            rectX = getWidth()-width-gutterX;
+            animationDeltaX = 0;
+            animationDeltaY = 1;
+            rectY += animationDeltaY*motionSpeed;
+        }
+        else if (rectY+gutterY+height > getHeight()){
+            rectY = getHeight()-height-gutterY;
+            animationDeltaX = -1;
+            animationDeltaY = 0;
+            rectX += animationDeltaY*motionSpeed;
+        }
+        else if (rectX < gutterX){
+            rectX = gutterX;
+            animationDeltaX = 0;
+            animationDeltaY = -1;
+            rectY += animationDeltaY*motionSpeed;
+        }
+        else if (rectY < gutterY){
+            rectY = gutterY;
+            animationDeltaX = 1;
+            animationDeltaY = 0;
+            rectX += animationDeltaY*motionSpeed;
+        }
+        else{
+            rectX += animationDeltaX*motionSpeed;
+            rectY += animationDeltaY*motionSpeed;
+        }
+        repaint();
+    }
+    
     /**
      * An example of a method - replace this comment with your own
      * 
