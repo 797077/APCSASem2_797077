@@ -9,19 +9,20 @@ import java.awt.event.*;
  */
 public class CanvasComponent extends JComponent implements MouseListener, MouseMotionListener, ActionListener, KeyListener
 {
-    public int width;
-    public int height;
-    int mouseFromX;
-    int mouseFromY;
-    int rectX = 0;
-    int rectY = 0;
-    boolean shapeSelected;
-    int animationDeltaX = 1;
-    int animationDeltaY = 0;
-    int gutterX = 10;
-    int gutterY = 10;
+    public int width;//width of square
+    public int height;//height of square
+    int mouseFromX;//mouse x-coordinate
+    int mouseFromY;//mouse y-coordinate
+    int rectX = 0;//far right of square
+    int rectY = 0;//bottom of square
+    boolean shapeSelected;//if shape is selected
+    int animationDeltaX = 1;//change in x-position of square
+    int animationDeltaY = 0;//change in y-position of square
+    int gutterX = 10;//a border in which square cannot go
+    int gutterY = 10;//a border in which square cannot go
     Timer animationTimer;
-    int motionSpeed = 1;
+    int motionSpeed = 1;//speed of square
+    boolean mousePressed = false;//if mouse is pressed
 
     /**
      * Constructor for objects of class CanvasComponent
@@ -31,14 +32,14 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
         setSize(w, h);
         width = w;
         height = h;
-        this.addMouseListener(this);
+        this.addMouseListener(this);//implements MouseListener
         this.addMouseMotionListener(this);
-        animationTimer = new Timer(20, this);
+        animationTimer = new Timer(20, this);//implements Timer
         animationTimer.start();
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * checks to see if certain keys are pressed and changes speed accordingly
      * 
      */
     public void keyTyped(KeyEvent e)
@@ -53,45 +54,45 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     *
      * 
      */
     public void keyPressed(KeyEvent e)
     {}
     
     /**
-     * An example of a method - replace this comment with your own
+     * 
      * 
      */
     public void keyReleased(KeyEvent e)
     {}
     
     /**
-     * An example of a method - replace this comment with your own
+     * performs actions based on square's location, speed, and user activity
      * 
      */
     public void actionPerformed(ActionEvent e)
     {
         Dimension componentSizeDimension = getSize();
-        if (rectX+gutterX+width > getWidth()){
-            rectX = getWidth()-width-gutterX;
-            animationDeltaX = 0;
-            animationDeltaY = 1;
-            rectY += animationDeltaY*motionSpeed;
+        if (rectX+gutterX+width > getWidth()){//for square moving right to moving down
+            rectX = getWidth()-width-gutterX;//makes sure squared does not enter gutter
+            animationDeltaX = 0;//square stops moving right
+            animationDeltaY = 1;//square moves down
+            rectY += animationDeltaY*motionSpeed;//moves square by the correct speed
         }
-        else if (rectY+gutterY+height > getHeight()){
+        else if (rectY+gutterY+height > getHeight()){//for square moving down to moving left
             rectY = getHeight()-height-gutterY;
             animationDeltaX = -1;
             animationDeltaY = 0;
             rectX += animationDeltaY*motionSpeed;
         }
-        else if (rectX < gutterX){
+        else if (rectX < gutterX){//for square moving left to moving up
             rectX = gutterX;
             animationDeltaX = 0;
             animationDeltaY = -1;
             rectY += animationDeltaY*motionSpeed;
         }
-        else if (rectY < gutterY){
+        else if (rectY < gutterY){//for square moving up to moving right
             rectY = gutterY;
             animationDeltaX = 1;
             animationDeltaY = 0;
@@ -101,21 +102,28 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
             rectX += animationDeltaX*motionSpeed;
             rectY += animationDeltaY*motionSpeed;
         }
-        repaint();
+        
+        if (mousePressed && mouseFromX != rectX && mouseFromY != rectY){
+            animationDeltaX = (mouseFromX-(rectX+(width/2)));//moves x-position of square to mouse
+            animationDeltaY = (mouseFromY-(rectY+(height/2)));//moves y-position of square to mouse
+            rectX += animationDeltaX*motionSpeed;
+            rectY += animationDeltaY*motionSpeed;
+        }
+        repaint();//repaints square
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * paints square
      * 
      */
     public void paintComponent(Graphics g)
     {
-        g.setColor(Color.black);
-        g.fillRect(rectX, rectY, width, height);
+        g.setColor(Color.black);//makes the square black in color
+        g.fillRect(rectX, rectY, width, height);//paints the square at the given points with the given width and height
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * 
      * 
      */
     public void mouseClicked(MouseEvent e)
@@ -124,47 +132,46 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * when the mouse is pressed, checks to see if the shape is selected by the mouse
      * 
      */
     public void mousePressed(MouseEvent e)
     {
         mouseFromX = e.getX();
         mouseFromY = e.getY();
+        mousePressed = true;
         if (mouseFromX >= rectX && mouseFromX <= rectX+width && mouseFromY >= rectY && mouseFromY <= rectY+height){
             shapeSelected = true;
         }
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * checks if mouse is released
      * 
      */
     public void mouseReleased(MouseEvent e)
     {
-        
+        mousePressed = false;
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * 
      * 
      */
     public void mouseEntered(MouseEvent e)
-    {
-        
+    {    
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * 
      * 
      */
     public void mouseExited(MouseEvent e)
-    {
-        
+    {  
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * gets the position of the mouse as it is dragged, and if the shape is selected, adjusts the coordinates of the square accordingly
      * 
      */
     public void mouseDragged(MouseEvent e)
@@ -175,11 +182,14 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
             rectX = mouseToX-mouseFromX;
             rectY = mouseToY-mouseFromY;
             repaint();
+        }else{
+            mouseFromX = e.getX();
+            mouseFromY = e.getY();
         }
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     *
      * 
      */
     public void mouseMoved(MouseEvent e)
