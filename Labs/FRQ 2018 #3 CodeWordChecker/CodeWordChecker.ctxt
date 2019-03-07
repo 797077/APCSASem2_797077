@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=CodeWordChecker
+comment0.text=\r\n\ FRQ\ 2018\ \#3\ CodeWordChecker\r\n\r\n\ @author\ (Grace\ Jau)\r\n\ @version\ (0307)\r\n
+comment1.params=a\ b\ w
+comment1.target=CodeWordChecker(int,\ int,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ CodeWordChecker\r\n
+comment2.params=w
+comment2.target=CodeWordChecker(java.lang.String)
+comment2.text=\r\n\ Constructor\ for\ objects\ of\ class\ CodeWordChecker\r\n
+comment3.params=codeWord
+comment3.target=boolean\ sampleMethod(java.lang.String)
+comment3.text=\r\n\ checks\ if\ the\ parameter\ String\ is\ valid\ by\ certain\ criteria\r\n
+numComments=4
