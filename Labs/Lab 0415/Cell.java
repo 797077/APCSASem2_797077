@@ -1,33 +1,46 @@
-
+import java.util.List;
+import java.util.ArrayList;
 /**
- * Lab 0415 Classwork Question 5
+ * Lab 0415 Classwork Question 5b
  *
  * @author (Grace Jau)
  * @version (0415)
  */
 public class Cell
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private boolean occupied;
+    private int id;
+    private List<Cell> neighbors;
 
     /**
      * Constructor for objects of class Cell
      */
     public Cell()
     {
-        // initialise instance variables
-        x = 0;
+        neighbors = new ArrayList<Cell>();
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * sets occupied to the parameter
      */
-    public int sampleMethod(int y)
+    public void setOccupied(boolean o)
     {
-        // put your code here
-        return x + y;
+        occupied = o;
+    }
+    
+    /**
+     * returns occupied
+     */
+    public boolean getOccupied()
+    {
+        return occupied;
+    }
+    
+    /**
+     * returns neighbors
+     */
+    public List<Cell> getNeighbors()
+    {
+        return neighbors;
     }
 }
