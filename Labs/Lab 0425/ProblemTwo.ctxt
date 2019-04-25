@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=ProblemTwo
+comment0.text=\r\n\ Lab\ 0425\ Problem\ One\r\n\r\n\ @author\ (Grace\ Jau)\r\n\ @version\ (0425)\r\n
+comment1.params=
+comment1.target=ProblemTwo()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ ProblemTwo\r\n
+comment2.params=a1\ a2\ targ
+comment2.target=int\ findSum(int[],\ int[],\ int)
+comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n
+numComments=3
